@@ -3,16 +3,19 @@ import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import { getProducts } from "./services/productService"
+import Spinner from "./Spinner"
 
 
 export default function App() {
   const [category, setCategory] = useState("");
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() =>{
     getProducts("phones").then((response) => setProducts(response))
-    .catch((e) => setError(e));
+    .catch((e) => setError(e))
+    .finally(() => setLoading(false));
   }, [])
 
   function renderProduct(p) {
@@ -27,8 +30,10 @@ export default function App() {
     );
   }
   const filteredProducts = category ? products.filter((p) => p.category === category) : products;
+
   if(error) throw error;
-  
+
+  if(loading) return <Spinner/>
   return (
     <>
       <div className="content">
