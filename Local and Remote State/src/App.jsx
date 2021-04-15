@@ -13,10 +13,18 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() =>{
-    getProducts("phones").then((response) => setProducts(response))
-    .catch((e) => setError(e))
-    .finally(() => setLoading(false));
-  }, [])
+    async function initPage(){
+    try {
+      const response = await getProducts("phones")
+      setProducts(response)
+    } catch (e){
+      setError(e)
+    } finally {
+      setLoading(false);
+    }
+}
+  initPage();
+}, [])
 
   function renderProduct(p) {
     return (
