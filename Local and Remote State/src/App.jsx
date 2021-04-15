@@ -1,31 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
-import { getProducts } from "./services/productService"
 import Spinner from "./Spinner"
-
+import useFetch from "./services/useFetch"
 
 export default function App() {
   const [category, setCategory] = useState("");
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() =>{
-    async function initPage(){
-    try {
-      const response = await getProducts("phones")
-      setProducts(response)
-    } catch (e){
-      setError(e)
-    } finally {
-      setLoading(false);
-    }
-}
-  initPage();
-}, [])
-
+  const {data: products, loading, error} = useFetch(category ? "products?category=" + category : "products");
   function renderProduct(p) {
     return (
       <div key={p.id} className="product">
