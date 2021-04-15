@@ -1,50 +1,17 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
+import { getProducts } from "./services/productService"
 
-const products = [
-  {
-    "id": 1,
-    "category": "phones",
-    "image": "iphone-12.jpg",
-    "name": "Iphone 12",
-    "price": 94.95,
-    "color": [
-      { "color": "Pacific Blue", "size": 128 },
-      { "color": "Red", "size": 256 }
-    ],
-    "description": "Chip A14 Bionic."
-  },
-  {
-    "id": 2,
-    "category": "phones",
-    "image": "iphone-se-family.jpg",
-    "name": "iPhone SE",
-    "price": 78.99,
-    "color": [
-      { "color": "Red", "size": 128 },
-      { "color": "Black", "size": 256 }
-    ],
-    "description": "Chip A13 Bionic."
-  },
-  {
-    "id": 3,
-    "category": "headphones",
-    "image": "airpods-wireless.png",
-    "name": "Airpods",
-    "price": 55.95,
-    "type": [
-      { "type": "Wireless Charger" },
-      { "type": "No Wireless Charger"}
-    ],
-    "description": "Look stylish while stomping in the mud."
-  }
-]
 
 export default function App() {
   const [category, setCategory] = useState("");
-  
+  const [products, setProducts] = useState([]);
+
+  useEffect(() =>{
+    getProducts("phones").then((response) => setProducts(response));
+  }, [])
 
   function renderProduct(p) {
     return (
