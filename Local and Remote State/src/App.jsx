@@ -43,7 +43,7 @@ const products = [
 ]
 
 export default function App() {
-  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
   
 
   function renderProduct(p) {
@@ -57,7 +57,7 @@ export default function App() {
       </div>
     );
   }
-
+  const filteredProducts = category ? products.filter((p) => p.category === category) : products;
   return (
     <>
       <div className="content">
@@ -65,13 +65,14 @@ export default function App() {
         <main>
           <section id="filters">
             <label htmlFor="size">Filter by Type:</label>{" "}
-            <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+            <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value="">All types</option>
               <option value="phones">Phones</option>
               <option value="headphones">Headphones</option>
             </select>
+            {<h2>Found {filteredProducts.length} items</h2>}
           </section>
-          <section id="products">{products.map(renderProduct)}</section>
+          <section id="products">{filteredProducts.map(renderProduct)}</section>
         </main>
       </div>
       <Footer />
