@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "phones",
+      "image": "iphone-12.jpg",
+      "name": "Iphone 12",
+      "price": 94.95,
+      "color": [
+        { "color": "Pacific Blue", "size": 128 },
+        { "color": "Red", "size": 256 }
+      ],
+      "description": "Chip A14 Bionic."
+    },
+    {
+      "id": 2,
+      "category": "phones",
+      "image": "iphone-se-family.jpg",
+      "name": "iPhone SE",
+      "price": 78.99,
+      "color": [
+        { "color": "Red", "size": 128 },
+        { "color": "Black", "size": 256 }
+      ],
+      "description": "Chip A13 Bionic."
+    },
+    {
+      "id": 3,
+      "category": "headphones",
+      "image": "airpods-wireless.jpg",
+      "name": "Airpods",
+      "price": 55.95,
+      "type": [
+        { "type": "Wireless Charger" },
+        { "type": "No Wireless Charger"}
+      ],
+      "description": "Look stylish while stomping in the mud."
+    }
+  ],
+  "shippingAddress": [
+    {
+      "id": 1,
+      "city": "",
+      "country": ""
+    }
+  ]
+}
