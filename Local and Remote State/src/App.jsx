@@ -8,9 +8,11 @@ import { getProducts } from "./services/productService"
 export default function App() {
   const [category, setCategory] = useState("");
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null)
 
   useEffect(() =>{
-    getProducts("phones").then((response) => setProducts(response));
+    getProducts("phones").then((response) => setProducts(response))
+    .catch((e) => setError(e));
   }, [])
 
   function renderProduct(p) {
@@ -25,6 +27,8 @@ export default function App() {
     );
   }
   const filteredProducts = category ? products.filter((p) => p.category === category) : products;
+  if(error) throw error;
+  
   return (
     <>
       <div className="content">
