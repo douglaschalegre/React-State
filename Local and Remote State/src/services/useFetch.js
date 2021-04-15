@@ -9,6 +9,7 @@ export default function useFetch(url){
 
 useEffect(() =>{
   async function initPage(){
+  setLoading(true);
   try {
     const response = await fetch(baseUrl + url);
     if (response.ok){
@@ -17,7 +18,6 @@ useEffect(() =>{
     }else{
       throw response;
     }
-
   } catch (e){
     setError(e)
   } finally {
