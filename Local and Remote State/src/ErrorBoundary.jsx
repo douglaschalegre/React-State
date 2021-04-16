@@ -1,5 +1,5 @@
 //https://pt-br.reactjs.org/docs/error-boundaries.html
-import React from "react"
+import React from "react";
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -18,6 +18,6 @@ export default class ErrorBoundary extends React.Component {
       return <h1>Algo deu errado.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
