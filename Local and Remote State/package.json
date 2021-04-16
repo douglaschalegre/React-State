@@ -24,11 +24,16 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": ["react-app", "prettier"],
+    "extends": [
+      "react-app",
+      "prettier"
+    ],
     "rules": {
       "prettier/prettier": "error"
     },
-    "plugins": ["prettier"]
+    "plugins": [
+      "prettier"
+    ]
   },
   "browserslist": {
     "production": [

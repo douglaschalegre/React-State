@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import Spinner from './Spinner';
 import useFetch from './services/useFetch';
-
+import { useParams } from 'react-router-dom';
 export default function Products() {
-  const [category, setCategory] = useState('');
+  const [type, setType] = useState('');
 
-  const { data: products, loading, error } = useFetch(
-    category ? 'products?category=' + category : 'products'
-  );
+  const { data: products, loading, error } = useFetch('products');
 
   function renderProduct(p) {
     return (
@@ -20,8 +18,9 @@ export default function Products() {
       </div>
     );
   }
-  const filteredProducts = category
-    ? products.filter((p) => p.category === category)
+
+  const filteredProducts = type
+    ? products.filter((p) => p.types.find((t) => t.type === type))
     : products;
 
   if (error) throw error;
@@ -30,15 +29,18 @@ export default function Products() {
   return (
     <>
       <section id='filters'>
-        <label htmlFor='size'>Filter by Type:</label>{' '}
+        <label htmlFor='type'>Filter by Type:</label>{' '}
         <select
-          id='category'
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          id='type'
+          value={type}
+          onChange={(e) => setType(e.target.value)}
         >
           <option value=''>All types</option>
-          <option value='phones'>Phones</option>
-          <option value='headphones'>Headphones</option>
+          <option value='Pacific Blue'>Pacific Blue</option>
+          <option value='Black'>Black</option>
+          <option value='Red'>Red</option>
+          <option value='No Wireless Charger'>No Wireless Charger</option>
+          <option value='Wireless Charger'>Wireless Charger</option>
         </select>
         {<h2>Found {filteredProducts.length} items</h2>}
       </section>
