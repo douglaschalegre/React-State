@@ -7,8 +7,8 @@
       "name": "Iphone 12",
       "price": 94.95,
       "types": [
-        { "type": "Pacific Blue", "size": 128 },
-        { "type": "Red", "size": 256 }
+        { "type": "Pacific Blue", "size": "128 gb" },
+        { "type": "Red", "size": "256 gb" }
       ],
       "description": "Chip A14 Bionic."
     },
@@ -18,10 +18,7 @@
       "image": "iphone-se-family.jpg",
       "name": "iPhone SE",
       "price": 78.99,
-      "types": [
-        { "type": "Red", "size": 128 },
-        { "type": "Black", "size": 256 }
-      ],
+      "types": [{ "type": "Red" }, { "type": "Black" }],
       "description": "Chip A13 Bionic."
     },
     {
@@ -31,8 +28,8 @@
       "name": "Airpods",
       "price": 55.95,
       "types": [
-        { "type": "Wireless Charger", "size": null },
-        { "type": "No Wireless Charger", "size": null }
+        { "type": "Wireless Charger" },
+        { "type": "No Wireless Charger" }
       ],
       "description": "Look stylish while stomping in the mud."
     }
